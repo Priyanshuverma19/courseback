@@ -286,7 +286,7 @@ export const deleteMyProfile= catchAsyncError(async(req,res,next)=>{
 
     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
     await User.findByIdAndDelete(req.user._id);
-    // await user.remove();
+    await user.remove();
     res.status(200)
     .cookie("token",null,{
         expires:new Date(Date.now()),
